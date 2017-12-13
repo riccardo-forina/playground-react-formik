@@ -1,5 +1,108 @@
+@import "https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css";
+
 body {
   margin: 0;
-  padding: 0;
+  padding: 1em;
   font-family: sans-serif;
+  background: #363636;
+}
+
+input[type=radio] {
+  margin-right: 0.2rem;
+}
+
+input[type=checkbox] {
+  margin-left: 0.2rem;
+}
+
+label + input[type=text] {
+  margin-left: 0.2rem;
+}
+
+textarea {
+  display: block;
+  width: 100%;
+  min-height: 100px;
+}
+
+.App {
+  max-width: 980px;
+}
+
+.App-title {
+  color: #FFF;
+  font-size: 3rem;
+  margin: 0 0 1rem;
+}
+
+.App-title span {
+  color: #4B9ACE;
+}
+
+.App-form {
+  display: flex;
+  align-items: flex-start;
+}
+
+.Step {
+  flex: 1;
+  margin-right: 0.5rem;
+  border: 0;
+  font-family: serif;
+  font-style: italic;
+  font-size: 1rem;
+}
+
+.Step[disabled] {
+  opacity: 0.3;
+}
+
+.Step legend {
+  background: #FFF;
+  padding: 0.3em 0.5em;
+  font-size: 1.2em;
+  font-family: sans-serif;
+  font-weight: bold;
+  font-style: normal;
+  border-radius: 0.5em;
+}
+
+.Step h3 {
+  font-family: sans-serif;
+  font-style: normal;
+  font-size: 1.1rem;
+  margin: 1em 0 0.5em 0;
+}
+
+.Step_label {
+  display: inline-block;
+  font-size: 1.1em;
+  margin: 1em 0;
+}
+
+.Step_smallInput {
+  margin: 1em 0 0 0;
+  font-size: 0.7em;
+}
+
+.Step-one {
+  background: #B5EBCD;
+}
+
+.Step_result {
+  background: #C2FBBF url(./checkmark.svg) center center no-repeat;
+  background-size: 60%;
+  width: 5em;
+  height: 5em;
+  border-radius: 50%;
+  margin: 2em auto 0;
+}
+
+.Step-two {
+  background: #B4DFEC;
+}
+
+.Step-three {
+  background: #EECCB6;
+  margin-right: 0;
 }

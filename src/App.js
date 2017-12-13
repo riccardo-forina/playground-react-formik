@@ -3,7 +3,6 @@ import { Formik } from 'formik';
 import Step1 from "./Step1";
 import Step2 from "./Step2";
 import Step3 from "./Step3";
-import './App.css';
 
 const initialValues = {
   attendees: 0,
@@ -73,7 +72,7 @@ class App extends Component {
             const isStep2Valid = !(!dirty || errors.showCompanyName || errors.companyName || errors.specialAccomodations);
 
             return (
-              <form onSubmit={handleSubmit}>
+              <form className="App-form" onSubmit={handleSubmit}>
                 <Step1
                   values={values}
                   onChange={onChange}

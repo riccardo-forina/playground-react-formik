@@ -15,9 +15,9 @@ const Step1 = ({ values, isValid, onChange, onBlur, setFieldValue }) => {
   }
 
   return (
-    <fieldset>
+    <fieldset className="Step Step-one">
       <legend>Step 1</legend>
-      <label htmlFor="attendees">
+      <label className="Step_label" htmlFor="attendees">
           How many people will be attending?
       </label>
       <select 
@@ -36,7 +36,7 @@ const Step1 = ({ values, isValid, onChange, onBlur, setFieldValue }) => {
       </select>
       { values.attendees > 0  
         ? (
-          <div>
+          <div className="Step_smallInput">
             <h3>Please provide full names:</h3>
             { values.names.map((n, idx) => 
               <div key={idx}>
@@ -56,7 +56,7 @@ const Step1 = ({ values, isValid, onChange, onBlur, setFieldValue }) => {
           </div> 
         )
         : null }
-      {isValid && <div id="step1_result">OK</div>}
+      {isValid && <div className="Step_result" />}
     </fieldset>
   );
 }

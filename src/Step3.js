@@ -1,9 +1,9 @@
 import React from "react";
 
 const Step3 = ({ disabled, values, isValid, onChange }) => (
-  <fieldset disabled={disabled}>
+  <fieldset disabled={disabled} className="Step Step-three">
     <legend>Step 3</legend>
-    <label htmlFor="rock">
+    <label className="Step_label">
       Are you ready to rock?
       <input 
         type="checkbox" 

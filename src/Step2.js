@@ -1,9 +1,9 @@
 import React from "react";
 
 const Step2 = ({ disabled, values, isValid, onChange }) => (
-  <fieldset disabled={disabled}>
+  <fieldset disabled={disabled} className="Step Step-two">
     <legend>Step 2</legend>
-    <p>
+    <p className="Step_label">
       Would you like your company name on your badges?
     </p>
     
@@ -17,7 +17,7 @@ const Step2 = ({ disabled, values, isValid, onChange }) => (
       />
       Yes
     </label>
-
+    &emsp;
     <label>
       <input 
         type="radio"
@@ -31,8 +31,8 @@ const Step2 = ({ disabled, values, isValid, onChange }) => (
 
     { values.showCompanyName === "yes" 
       ? (
-        <div>
-          <label htmlFor="companyName">
+        <div className="Step_smallInput">
+          <label>
               Company Name:
           </label>
           <input 
@@ -45,7 +45,7 @@ const Step2 = ({ disabled, values, isValid, onChange }) => (
       )
       : null }
     <div>			
-      <p>
+      <p className="Step_label">
           Will anyone in your group require special accommodations?
       </p>
       <label>
@@ -58,7 +58,7 @@ const Step2 = ({ disabled, values, isValid, onChange }) => (
         />
         Yes
       </label>
-
+      &emsp;
       <label>
         <input 
           type="radio"
@@ -72,8 +72,8 @@ const Step2 = ({ disabled, values, isValid, onChange }) => (
     </div>
     { values.specialAccomodations === "yes"
       ? (
-        <div>
-          <label htmlFor="specialAccomodationsText">
+        <div className="Step_smallInput">
+          <label>
               Please explain below:
           </label>
           <textarea 
@@ -84,7 +84,7 @@ const Step2 = ({ disabled, values, isValid, onChange }) => (
         </div>
       )
       : null }
-    {isValid && <div id="step1_result">OK</div>}
+    {isValid && <div className="Step_result" />}
   </fieldset>
 );
 
