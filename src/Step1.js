@@ -1,11 +1,14 @@
 import React from "react";
+import { TransitionGroup } from "react-transition-group";
+import StepResult from "./StepResult";
+import StepAnimation from "./StepAnimation";
 
 const Step1 = ({ values, isValid, onChange, onBlur, setFieldValue }) => {
   
   const onAttendeesCountChange = (ev) => {
     const attendees = parseInt(ev.target.value, 10);
-    onChange(ev);
     setFieldValue("names", new Array(attendees).fill(""));
+    onChange(ev);
   }
 
   const onAttendeeNameChange = (idx, ev) => {
@@ -13,7 +16,6 @@ const Step1 = ({ values, isValid, onChange, onBlur, setFieldValue }) => {
     newNames.splice(idx, 1, ev.target.value);
     setFieldValue("names", newNames)
   }
-
   return (
     <fieldset className="Step Step-one">
       <legend>Step 1</legend>
@@ -34,12 +36,17 @@ const Step1 = ({ values, isValid, onChange, onBlur, setFieldValue }) => {
         <option value={4}>4</option>
         <option value={5}>5</option>
       </select>
-      { values.attendees > 0  
-        ? (
-          <div className="Step_smallInput">
+      <div className="Step_smallInput">
+        <TransitionGroup>
+        { values.attendees !== "0" && 
+          <StepAnimation>
             <h3>Please provide full names:</h3>
-            { values.names.map((n, idx) => 
-              <div key={idx}>
+          </StepAnimation> }
+        </TransitionGroup>
+        <TransitionGroup>
+          { values.names.map((n, idx) => 
+            <StepAnimation key={idx}>
+              <div className="Step-one_attendee">
                 <label htmlFor={`name_attendee_${idx}`}>
                   Attendee {idx + 1} Name:
                 </label>
@@ -52,11 +59,11 @@ const Step1 = ({ values, isValid, onChange, onBlur, setFieldValue }) => {
                   onBlur={onBlur}
                 />
               </div>
-            )}
-          </div> 
-        )
-        : null }
-      {isValid && <div className="Step_result" />}
+            </StepAnimation>
+          )}
+        </TransitionGroup>
+      </div> 
+      <StepResult isValid={isValid} />
     </fieldset>
   );
 }

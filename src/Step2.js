@@ -1,4 +1,7 @@
 import React from "react";
+import { TransitionGroup } from "react-transition-group";
+import StepResult from "./StepResult";
+import StepAnimation from "./StepAnimation";
 
 const Step2 = ({ disabled, values, isValid, onChange }) => (
   <fieldset disabled={disabled} className="Step Step-two">
@@ -29,21 +32,25 @@ const Step2 = ({ disabled, values, isValid, onChange }) => (
       No
     </label>
 
+    <TransitionGroup>
     { values.showCompanyName === "yes" 
       ? (
-        <div className="Step_smallInput">
-          <label>
-              Company Name:
-          </label>
-          <input 
-            type="text"
-            name="companyName"
-            value={values.companyName} 
-            onChange={onChange}
-          />
-        </div>
+        <StepAnimation>
+          <div className="Step_smallInput">
+            <label>
+                Company Name:
+            </label>
+            <input 
+              type="text"
+              name="companyName"
+              value={values.companyName} 
+              onChange={onChange}
+            />
+          </div>
+        </StepAnimation>
       )
       : null }
+    </TransitionGroup>
     <div>			
       <p className="Step_label">
           Will anyone in your group require special accommodations?
@@ -70,21 +77,25 @@ const Step2 = ({ disabled, values, isValid, onChange }) => (
         No
       </label>
     </div>
+    <TransitionGroup>
     { values.specialAccomodations === "yes"
       ? (
-        <div className="Step_smallInput">
-          <label>
-              Please explain below:
-          </label>
-          <textarea 
-            name="specialAccomodationsText"
-            value={values.specialAccomodationsText}
-            onChange={onChange}
-          />
-        </div>
+        <StepAnimation>
+          <div className="Step_smallInput">
+            <label>
+                Please explain below:
+            </label>
+            <textarea 
+              name="specialAccomodationsText"
+              value={values.specialAccomodationsText}
+              onChange={onChange}
+            />
+          </div>
+        </StepAnimation>
       )
       : null }
-    {isValid && <div className="Step_result" />}
+    </TransitionGroup>
+    <StepResult isValid={isValid} />
   </fieldset>
 );
 

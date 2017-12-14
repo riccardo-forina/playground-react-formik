@@ -85,10 +85,6 @@ textarea {
   font-size: 0.7em;
 }
 
-.Step-one {
-  background: #B5EBCD;
-}
-
 .Step_result {
   background: #C2FBBF url(./checkmark.svg) center center no-repeat;
   background-size: 60%;
@@ -98,6 +94,18 @@ textarea {
   margin: 2em auto 0;
 }
 
+.Step_result-entering {
+  display: block;
+}
+
+.Step-one {
+  background: #B5EBCD;
+}
+
+.Step-one_attendee {
+  margin-bottom: 0.5em;
+}
+
 .Step-two {
   background: #B4DFEC;
 }
@@ -105,4 +113,26 @@ textarea {
 .Step-three {
   background: #EECCB6;
   margin-right: 0;
+}
+
+.StepAnimation-enter {
+  opacity: 0.4;
+  transform: translateY(-30%);
+  overflow: hidden;
+}
+
+.StepAnimation-enter.StepAnimation-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 300ms ease-in;
+}
+
+.StepAnimation-exit {
+  max-height: 30px;
+}
+
+.StepAnimation-exit.StepAnimation-exit-active {
+  opacity: 0.4;
+  transform: translateY(-30%);
+  transition: all 150ms ease-in;
 }

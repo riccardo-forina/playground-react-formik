@@ -5,7 +5,7 @@ import Step2 from "./Step2";
 import Step3 from "./Step3";
 
 const initialValues = {
-  attendees: 0,
+  attendees: "0",
   names: [],
   showCompanyName: undefined,
   companyName: '',
@@ -22,10 +22,9 @@ class App extends Component {
 
         <Formik
           initialValues={initialValues}
-          validateOnBlur={false}
           validate={values => {
             let errors = {};
-            if (!parseInt(values.attendees, 10) > 0) {
+            if (values.attendees === "0") {
               errors.attendees = 'Required';
             }
             if (values.names.indexOf("") >= 0) {
@@ -68,27 +67,31 @@ class App extends Component {
               handleChange(...args);
               handleBlur(...args);
             };
-            const isStep1Valid = !(!dirty || errors.attendees || errors.names);
-            const isStep2Valid = !(!dirty || errors.showCompanyName || errors.companyName || errors.specialAccomodations);
+            const isStep1Valid = !(
+              !dirty || errors.attendees || errors.names
+            );
+            const isStep2Valid = !(
+              !dirty || errors.showCompanyName || errors.companyName || 
+              errors.specialAccomodations || errors.specialAccomodationsText
+            );
 
             return (
               <form className="App-form" onSubmit={handleSubmit}>
                 <Step1
                   values={values}
                   onChange={onChange}
-                  onBlur={handleBlur}
                   setFieldValue={setFieldValue}
                   isValid={isStep1Valid}
                 />
                 <Step2
                   values={values}
-                  onChange={onChange}
+                  onChange={handleChange}
                   disabled={!isStep1Valid}
                   isValid={isStep2Valid}
                 />
                 <Step3
                   values={values}
-                  onChange={onChange}
+                  onChange={handleChange}
                   disabled={!isStep2Valid}
                   isValid={isValid}
                 />
